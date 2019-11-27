@@ -1,6 +1,6 @@
 # Pre-assignment
 
-Demo: [Demo](http://reaktor.jebetech.online/)
+Demo: [Demo](https://reaktor.jebetech.online/)
 
 ## Requirements
 
