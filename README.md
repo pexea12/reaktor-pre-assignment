@@ -4,8 +4,8 @@ Demo: [Demo](https://frontend.reaktor.jebetech.online/)
 
 ## Requirements
 
-Node 12.13.1
-TypeScript 3.7.4
+- Node 12.13.1
+- TypeScript 3.7.4
 
 - Backend:
   + Express.js
