@@ -1,22 +1,46 @@
 # Pre-assignment
 
-Demo: [Demo](https://reaktor.jebetech.online/)
+Demo: [Demo](https://frontend.reaktor.jebetech.online/)
 
 ## Requirements
 
 Node 12.13.1
+TypeScript 3.7.4
 
-## Run
+- Backend:
+  + Express.js
 
-`node server.js`
+- Frontend:
+  + Vue.js
+  + Axios
+
+## Install
+- Backend: `cd backend && yarn`
+- Frontend: `cd frontend && yarn`
+
+
+## Development
+- Backend: `cd backend && yarn start`
+- Frontend: `cd frontend && yarn serve`
+
+## Build
+- Frontend: `cd frontend && yarn build`
+
+
 
 ## Environment variables
-- `STATUS_FILE_PATH`: default to `./status`
-- `HOST`: default to `127.0.0.1`
-- `PORT`: default to `3000`
+- Backend:
+  + `STATUS_FILE_PATH`: default to `./status`
+  + `HOST`: default to `127.0.0.1`
+  + `PORT`: default to `3000`
+
+
+## Test
+- Backend: `cd backend && yarn test` (using [supertest](https://github.com/visionmedia/supertest) and [jest](https://github.com/facebook/jest))
+- Frontend: `cd frontend && yarn test:unit` (Using [jest](https://github.com/facebook/jest))
+
 
 ## Instruction
-
 On a Debian and Ubuntu systems, there is a file called /var/lib/dpkg/status that holds information about software packages that the system knows about. Write a small program in a programming language of your choice that exposes some key information about packages in the file via an HTML interface.
 
 - The index page lists installed packages alphabetically with package names as links.
