@@ -3,7 +3,8 @@ interface Item {
   name: string | null,
   description: string | null,
   reverse_depend_ids: number[],
-  depends: string[][],
+  depend_ids: number[],
+  depends?: string[][],
 };
 
 interface Dictionary {
@@ -20,6 +21,7 @@ const parseItem = (itemStr: string, index: number) => {
     name: '',
     description: '',
     reverse_depend_ids: [],
+    depend_ids: [],
     depends: [],
   };
 
@@ -66,12 +68,30 @@ const calculateReverseDependencies = (items: Item[]) => {
   });
 }
 
+const formatDependencies = (items: Item[]) => {
+  // Replace dependency by its ID and remove duplication
+  items.forEach((item, index) => {
+    item.depend_ids = item.depends.map((depend) => {
+        // Replace by ID
+        const itemIds = depend.filter(itemName => itemDict[itemName])
+          .map(itemName => itemDict[itemName]);
+        return itemIds;
+      })
+      .filter(itemIds => itemIds.length > 0)
+      .map(itemIds => itemIds[0]);
+
+    item.depend_ids = [...new Set(item.depend_ids)];
+    delete item.depends;
+  });
+}
+
 export const parseStatus = (statusStr: string) => {
   const rawItems = statusStr.split('\n\n')
     .filter(item => item.startsWith('Package'));
 
     const items = rawItems.map(parseItem);
     calculateReverseDependencies(items);
+    formatDependencies(items);
 
     return items;
 }
